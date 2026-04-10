@@ -1,6 +1,7 @@
 package com.khang.badminton.data.repository
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.tasks.await
 
 class AuthRepositoryImpl : AuthRepository {
@@ -29,6 +30,16 @@ class AuthRepositoryImpl : AuthRepository {
         return try {
             auth.sendPasswordResetEmail(email).await()
             Result.success("Email sent")
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun firebaseAuthWithGoogle(idToken: String): Result<String> {
+        return try {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            auth.signInWithCredential(credential).await()
+            Result.success("Google login success")
         } catch (e: Exception) {
             Result.failure(e)
         }

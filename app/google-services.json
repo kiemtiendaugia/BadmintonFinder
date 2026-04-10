@@ -12,7 +12,20 @@
           "package_name": "com.khang.badminton"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "332950911080-sth9vnkovpld5l924pbotpd5libn10dn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.khang.badminton",
+            "certificate_hash": "a6312eadfde67fc212cabf528d46ab56ca8d47ef"
+          }
+        },
+        {
+          "client_id": "332950911080-0n9cf3843oscdj7drdqd6b9hghhit9f0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA9oVwHpLv5_Hq-UEbQYHcbExNp1zhR58E"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332950911080-0n9cf3843oscdj7drdqd6b9hghhit9f0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
