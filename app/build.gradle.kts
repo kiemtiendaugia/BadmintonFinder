@@ -59,17 +59,19 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
 // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.10.0")
 // Activity KTX
-    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("androidx.activity:activity-ktx:1.13.0")
 // Material UI
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
-    implementation("com.google.android.gms:play-services-auth:20.7.0")
-    implementation("com.google.firebase:firebase-firestore:26.1.2")
+    implementation("com.google.android.material:material:1.13.0")
+    implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
+    implementation(platform("com.google.firebase:firebase-bom:34.12.0"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+    implementation("com.google.android.gms:play-services-auth:21.5.1")
+    implementation("com.google.firebase:firebase-firestore:26.2.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.google.firebase:firebase-firestore-ktx: 5.0.5")
 }

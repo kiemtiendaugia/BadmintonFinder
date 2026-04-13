@@ -2,7 +2,6 @@ package com.khang.badminton.data.repository
 
 import android.util.Log
 import com.google.firebase.Firebase
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.khang.badminton.data.model.User
 import kotlinx.coroutines.tasks.await

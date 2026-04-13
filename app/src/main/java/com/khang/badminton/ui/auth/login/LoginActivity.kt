@@ -16,6 +16,7 @@ import com.khang.badminton.utils.AuthState
 import com.khang.badminton.viewmodel.AuthViewModel
 
 import com.khang.badminton.ui.auth.signup.SignupActivity
+import com.khang.badminton.ui.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -63,10 +64,12 @@ class LoginActivity : AppCompatActivity() {
         viewModel.loginState.observe(this) { state ->
             when (state) {
                 is AuthState.Loading -> {
-                    // show loading
+                    Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show()
                 }
                 is AuthState.Success -> {
                     Toast.makeText(this, state.message, Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
                 }
                 is AuthState.Error -> {
                     Toast.makeText(this, state.message, Toast.LENGTH_SHORT).show()
