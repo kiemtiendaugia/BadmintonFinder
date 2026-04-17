@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".ui.auth.signup.SignupActivity" />
         <activity android:name=".ui.auth.forgot.ForgotPasswordActivity" />
+        <activity android:name=".ui.home.HomeActivity" />
     </application>
 
 </manifest>

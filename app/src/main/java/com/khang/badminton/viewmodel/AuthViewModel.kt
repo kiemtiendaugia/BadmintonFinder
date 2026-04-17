@@ -1,12 +1,15 @@
 package com.khang.badminton.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
+import com.google.firebase.auth.FirebaseAuth
 import com.khang.badminton.data.model.User
 import kotlinx.coroutines.launch
 
 import com.khang.badminton.data.repository.AuthRepositoryImpl
 import com.khang.badminton.data.repository.UserRepository
 import com.khang.badminton.utils.AuthState
+import kotlinx.coroutines.flow.*
 
 class AuthViewModel : ViewModel() {
 
@@ -34,6 +37,9 @@ class AuthViewModel : ViewModel() {
     }
     private val _authState = MutableLiveData<AuthState>()
     val authState: LiveData<AuthState> = _authState
+
+    //private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
+    //val authState = _authState.asStateFlow()
 
     fun register(email: String, password: String, name: String, phone: String) {
         _authState.value = AuthState.Loading
@@ -85,10 +91,12 @@ class AuthViewModel : ViewModel() {
         _authState.value = AuthState.Loading
 
         viewModelScope.launch {
-            val result = repository.firebaseAuthWithGoogle(idToken)
 
-            result.onSuccess {
-                val firebaseUser = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+            try {
+                // 🔥 gọi login
+                repository.firebaseAuthWithGoogle(idToken)
+
+                val firebaseUser = FirebaseAuth.getInstance().currentUser
 
                 firebaseUser?.let {
                     val user = User(
@@ -101,11 +109,12 @@ class AuthViewModel : ViewModel() {
                     userRepository.saveUser(user)
                 }
 
-                _authState.value = AuthState.Success("Login success")
-            }
+                Log.d("AUTH", "Google login SUCCESS")
+                _loginState.value = AuthState.Success("Login success")
 
-            result.onFailure {
-                _authState.value = AuthState.Error(it.message ?: "Error")
+            } catch (e: Exception) {
+                Log.e("AUTH", "Google login FAIL: ${e.message}")
+                _loginState.value = AuthState.Error(e.message ?: "Error")
             }
         }
     }

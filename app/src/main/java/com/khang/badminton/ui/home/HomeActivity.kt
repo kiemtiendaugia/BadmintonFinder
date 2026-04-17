@@ -1,4 +1,5 @@
 package com.khang.badminton.ui.home
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -12,6 +13,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.bumptech.glide.Glide
 import com.khang.badminton.databinding.ActivityHomeBinding
+import com.khang.badminton.ui.auth.login.LoginActivity
 
 
 class HomeActivity : AppCompatActivity() {
@@ -71,7 +73,10 @@ class HomeActivity : AppCompatActivity() {
                     }
                     "Logout" -> {
                         FirebaseAuth.getInstance().signOut()
-                        finish()
+                        val intent = Intent(this, LoginActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                        startActivity(intent)
                     }
                 }
 

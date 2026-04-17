@@ -44,6 +44,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
+        observeViewModel()
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -52,12 +54,13 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.btnGoogleLogin.setOnClickListener {
+            googleSignInClient.signOut()
             val signInIntent = googleSignInClient.signInIntent
             launcher.launch(signInIntent)
         }
 
 
-        observeViewModel()
+
     }
 
     private fun observeViewModel() {
